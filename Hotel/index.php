@@ -1,10 +1,5 @@
 <?php
  session_start();  
- if(isset($_SESSION["user"]))  
- {  
-			echo("user is available");  
- }  
- 
 include('db.php');
 ?>
 <!DOCTYPE html>
@@ -47,7 +42,24 @@ include('db.php');
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<h1><a class="navbar-brand" href="index.php">SUN <span>RISE</span><p class="logo_w3l_agile_caption">Your Dreamy Resort</p></a></h1>
+					<h1>
+						<a class="navbar-brand" href="index.php">SUN <span>RISE</span><p class="logo_w3l_agile_caption">Your Dreamy Resort</p></a>
+				</h1>
+<?php if(isset($_SESSION["user"])): ?>
+<display   <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="font-size: x-small;" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong><?php  echo($_SESSION['user']) ?></strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+										<li><a href="admin/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </ul>
+                </li>>
+<?php else: ?>
+<display>
+<?php endif; ?>
+				
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
@@ -63,8 +75,10 @@ include('db.php');
 						</ul>
 					</nav>
 				</div>
+				<div class="nav navbar-nav navbar-right">
+				
+				</div>
 			</nav>
-
 		</div>
 	</div>
 <!-- //header -->
@@ -520,8 +534,7 @@ include('db.php');
 					</script>
 <!-- //gallery popup -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<!-- <script type="text/javascript" src="js/easing.js"></script> -->
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -607,10 +620,7 @@ fit: true
 		$().UItoTop({ easingType: 'easeOutQuart' });
 		});
 	</script>
-	
-	<div class="arr-w3ls">
-	<a href="#home" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-	</div>
+
 <!-- //smooth scrolling -->
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 </body>
