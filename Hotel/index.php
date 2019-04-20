@@ -1,4 +1,10 @@
 <?php
+ session_start();  
+ if(isset($_SESSION["user"]))  
+ {  
+			echo("user is available");  
+ }  
+ 
 include('db.php');
 ?>
 <!DOCTYPE html>
@@ -45,7 +51,7 @@ include('db.php');
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-					<nav class="menu menu--iris">
+					<nav class="menu">
 						<ul class="nav navbar-nav menu__list">
 							<li class="menu__item menu__item--current"><a href="index.php" class="menu__link">Home</a></li>
 							<li class="menu__item"><a href="#about" class="menu__link scroll">About</a></li>
@@ -111,7 +117,6 @@ include('db.php');
 <div class="col-md-12 book-form-left-w3layouts">
 	<a href="admin/reservation.php"><h2>ROOM RESERVATION</h2></a>
 </div>
-
 			<div class="clearfix"> </div>
 </div>
 <!-- banner-bottom -->
@@ -232,14 +237,6 @@ include('db.php');
 							<h4>Lucas Jimenez</h4>
 							<span>Manager</span>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
-						<div class="social-bnr-agileits footer-icons-agileinfo">
-							<ul class="social-icons3">
-								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
-								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
-								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
-								<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
-							</ul>
-						</div>							
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -250,14 +247,6 @@ include('db.php');
 							<h4>Sarah Connor</h4>
 							<span>Receptionist</span>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>	
-						<div class="social-bnr-agileits footer-icons-agileinfo">
-							<ul class="social-icons3">
-								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
-								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
-								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
-								<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
-							</ul>
-						</div>							
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -268,14 +257,6 @@ include('db.php');
 							<h4>Ivan Simpson</h4>
 							<span>Manager</span>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
-						<div class="social-bnr-agileits footer-icons-agileinfo">
-							<ul class="social-icons3">
-								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
-								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
-								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
-								<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
-							</ul>
-						</div>							
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -286,14 +267,6 @@ include('db.php');
 							<h4>Marc Gutierrez</h4>
 							<span>Receptionist</span>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
-						<div class="social-bnr-agileits footer-icons-agileinfo">
-							<ul class="social-icons3">
-								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
-								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
-								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
-								<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
-							</ul>
-						</div>							
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -506,184 +479,15 @@ include('db.php');
 			</div>
 		</div>
 	</div>
-	 <!--// rooms & rates -->
-  <!-- visitors -->
-	<!-- <div class="w3l-visitors-agile" >
-		<div class="container">
-                 <h3 class="title-w3-agileits title-black-wthree">What other visitors experienced</h3> 
-		</div>
-		<div class="w3layouts_work_grids">
-			<section class="slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div class="w3layouts_work_grid_left">
-								<img src="images/5.jpg" alt=" " class="img-responsive" />
-								<div class="w3layouts_work_grid_left_pos">
-									<img src="images/c1.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-							<div class="w3layouts_work_grid_right">
-								<h4>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								Worth to come again
-								</h4>
-								<p>Sed tempus vestibulum lacus blandit faucibus. 
-									Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula, 
-									at imperdiet urna. </p>
-								<h5>Julia Rose</h5>
-								<p>Germany</p>
-							</div>
-							<div class="clearfix"> </div>
-						</li>
-						<li>
-							<div class="w3layouts_work_grid_left">
-								<img src="images/5.jpg" alt=" " class="img-responsive" />
-								<div class="w3layouts_work_grid_left_pos">
-									<img src="images/c2.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-							<div class="w3layouts_work_grid_right">
-								<h4>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								Worth to come again
-								</h4>
-								<p>Sed tempus vestibulum lacus blandit faucibus. 
-									Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula, 
-									at imperdiet urna. </p>
-								<h5>Jahnatan Smith</h5>
-								<p>United States</p>
-							</div>
-							<div class="clearfix"> </div>
-						</li>
-						<li>
-							<div class="w3layouts_work_grid_left">
-								<img src="images/5.jpg" alt=" " class="img-responsive" />
-								<div class="w3layouts_work_grid_left_pos">
-									<img src="images/c3.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-							<div class="w3layouts_work_grid_right">
-								<h4>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								Worth to come again
-								</h4>
-								<p>Sed tempus vestibulum lacus blandit faucibus. 
-									Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula, 
-									at imperdiet urna. </p>
-								<h5>Rosalind Cloer</h5>
-								<p>Italy</p>
-							</div>
-							<div class="clearfix"> </div>
-						</li>
-						<li>
-							<div class="w3layouts_work_grid_left">
-								<img src="images/5.jpg" alt=" " class="img-responsive" />
-								<div class="w3layouts_work_grid_left_pos">
-									<img src="images/c4.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-							<div class="w3layouts_work_grid_right">
-								<h4>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								Worth to come again
-								</h4>
-								<p>Sed tempus vestibulum lacus blandit faucibus. 
-									Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula, 
-									at imperdiet urna. </p>
-								<h5>Amie Bublitz</h5>
-								<p>Switzerland</p>
-							</div>
-							<div class="clearfix"> </div>
-						</li>
-					</ul>
-				</div>
-			</section>
-		</div>	
-	</div> -->
-  <!-- visitors -->
-<!-- contact -->
 <section class="contact-w3ls" id="contact">
 	<div class="container">
-		<div class="col-lg-6 col-md-6 col-sm-6 contact-w3-agile2" data-aos="flip-left">
+		<div style="text-align: center;">
 			<div class="contact-agileits">
 				<h4>Contact Us</h4>
-				<p class="contact-agile2">Sign Up For Our News Letters</p>
-				<form  method="post" name="sentMessage" id="contactForm" >
-					<div class="control-group form-group">
-                        
-                            <label class="contact-p1">Full Name:</label>
-                            <input type="text" class="form-control" name="name" id="name" required >
-                            <p class="help-block"></p>
-                       
-                    </div>	
-                    <div class="control-group form-group">
-                        
-                            <label class="contact-p1">Phone Number:</label>
-                            <input type="tel" class="form-control" name="phone" id="phone" required >
-							<p class="help-block"></p>
-						
-                    </div>
-                    <div class="control-group form-group">
-                        
-                            <label class="contact-p1">Email Address:</label>
-                            <input type="email" class="form-control" name="email" id="email" required >
-							<p class="help-block"></p>
-						
-                    </div>
-                    
-                    
-                    <input type="submit" name="sub" value="Send Now" class="btn btn-primary">	
-				</form>
-				<?php
-				if(isset($_POST['sub']))
-				{
-					$name =$_POST['name'];
-					$phone = $_POST['phone'];
-					$email = $_POST['email'];
-					$approval = "Not Allowed";
-					$sql = "INSERT INTO `contact`(`fullname`, `phoneno`, `email`,`cdate`,`approval`) VALUES ('$name','$phone','$email',now(),'$approval')" ;
-					
-					
-					if(mysqli_query($con,$sql))
-					echo"OK";
-					
-				}
-				?>
-			</div>
-		</div>
-		<div class="col-lg-6 col-md-6 col-sm-6 contact-w3-agile1" data-aos="flip-right">
-			<h4>Connect With Us</h4>
 			<p class="contact-agile1"><strong>Phone :</strong>+94 (65)222-44-55</p>
 			<p class="contact-agile1"><strong>Email :</strong> <a href="mailto:name@example.com">INFO@SUNRISE.COM</a></p>
 			<p class="contact-agile1"><strong>Address :</strong> New Kalmunai Road, Batticaloa, Sri Lanka</p>
-																
-			<div class="social-bnr-agileits footer-icons-agileinfo">
-				<ul class="social-icons3">
-								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
-								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
-								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
-								
-							</ul>
 			</div>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3074.7905052320443!2d-77.84987248482734!3d39.586871613613056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c9f6a80ccf0661%3A0x7210426c67abc40!2sVirginia+Welcome+Center%2FSafety+Rest+Area!5e0!3m2!1sen!2sin!4v1485760915662" ></iframe>
-		</div>
 		<div class="clearfix"></div>
 	</div>
 </section>

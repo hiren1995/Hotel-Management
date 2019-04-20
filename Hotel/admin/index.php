@@ -12,41 +12,31 @@
   <meta charset="UTF-8">
   <title>SUN RISE ADMIN</title>
 
-  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css">
-     
-
-  
 </head>
 
 <body>
- 
-
  <div class="container">
-
-
       <div id="login">
-
         <form method="post">
-
           <fieldset class="clearfix">
-
+          <div class="form-group">
             <p><span class="fontawesome-user"></span><input type="text"  name="user" value="Username" onBlur="if(this.value == '') this.value = 'Username'" onFocus="if(this.value == 'Username') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
             <p><span class="fontawesome-lock"></span><input type="password" name="pass"  value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
             <p><input type="submit" name="sub"  value="Login"></p>
+            <p style = "text-align: center;   margin-bottom: 1em;"><a href="register.php">do not have account? </a></p>
             <p><a role="button" href="../index.php" style="width: 280px;" class="btn btn-info">Back </a></p>
-
+            </div> 
           </fieldset>
-
         </form>
-
       </div> <!-- end login -->
-      
-
     </div>
  <div class="bottom">  <h3><a href="../index.php">Hotel Name Login Page</a></h3></div>
   
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+ <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
   
 </body>
 </html>
@@ -74,7 +64,7 @@
          
          $_SESSION['user'] = $myusername;
          
-         header("location: home.php");
+         header("location: ..\index.php");
       }else {
          echo '<script>alert("Your Login Name or Password is invalid") </script>' ;
       }
