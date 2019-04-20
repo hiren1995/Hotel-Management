@@ -11,23 +11,16 @@
 <head>
   <meta charset="UTF-8">
   <title>SUN RISE ADMIN</title>
-  
-  
+
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
      
-      <link rel="stylesheet" href="css/style.css">
 
   
 </head>
 
 <body>
-  <div id="clouds">
-	<div class="cloud x1"></div>
-	<!-- Time for multiple clouds to dance around -->
-	<div class="cloud x2"></div>
-	<div class="cloud x3"></div>
-	<div class="cloud x4"></div>
-	<div class="cloud x5"></div>
-</div>
+ 
 
  <div class="container">
 
@@ -41,18 +34,19 @@
             <p><span class="fontawesome-user"></span><input type="text"  name="user" value="Username" onBlur="if(this.value == '') this.value = 'Username'" onFocus="if(this.value == 'Username') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
             <p><span class="fontawesome-lock"></span><input type="password" name="pass"  value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
             <p><input type="submit" name="sub"  value="Login"></p>
+            <p><a role="button" href="../index.php" style="width: 280px;" class="btn btn-info">Back </a></p>
 
           </fieldset>
 
         </form>
 
-       
-
       </div> <!-- end login -->
+      
 
     </div>
-    <div class="bottom">  <h3><a href="../index.php">SUN RISE HOMEPAGE</a></h3></div>
+ <div class="bottom">  <h3><a href="../index.php">Hotel Name Login Page</a></h3></div>
   
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
   
 </body>
 </html>
