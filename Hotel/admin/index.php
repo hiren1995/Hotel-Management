@@ -51,7 +51,7 @@
       $myusername = mysqli_real_escape_string($con,$_POST['user']);
       $mypassword = mysqli_real_escape_string($con,$_POST['pass']); 
       
-      $sql = "SELECT id FROM login WHERE usname = '$myusername' and pass = '$mypassword'";
+      $sql = "SELECT * FROM credential WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($con,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
