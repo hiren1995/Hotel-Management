@@ -7,13 +7,9 @@ include('db.php')
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>REGISTRATION SUNRISE HOTEL</title>
-	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-     <!-- FontAwesome Styles-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-        <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
-     <!-- Google Fonts-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
@@ -23,6 +19,9 @@ include('db.php')
                 <ul class="nav" id="main-menu">
                     <li>
                         <a  href="../index.php"><i class="fa fa-home"></i> Home</a>
+                    </li>
+                    <li>
+                        <a  href="index.php"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
 					</ul>
             </div>
@@ -50,24 +49,24 @@ include('db.php')
 
                         <div class="form-group">
                                             <label>Username</label>
-                                            <input name="uname"autocomplete="false" class="form-control" required>
+                                            <input name="uname" maxlength="20" autocomplete="false" class="form-control" required>
                                             
                                </div>
                                <div class="form-row">
                                <div  class="form-group col-md-6" style="padding-left: 0;">
                                             <label>Password</label>
-                                            <input name="pass" type="password" autocomplete="off" class="form-control" required>
+                                            <input name="pass" type="password"  maxlength="20" autocomplete="off" class="form-control" required>
                                             
                                </div>
                                <div  class="form-group col-md-6">
                                             <label>Confirm Password</label>
-                                            <input name="cpass"  type="password" autocomplete="off" class="form-control" required>
+                                            <input name="cpass"  type="password"  maxlength="20" autocomplete="off" class="form-control" required>
                                             
                                </div>
                                </div>
 							  <div class="form-group">
                                             <label>Full Name</label>
-                                            <input name="fname" class="form-control" required>
+                                            <input name="fname"  maxlength="45" class="form-control" required>
                                             
                                </div>
                                <div class="form-group">
@@ -77,18 +76,18 @@ include('db.php')
                                </div>
 							   <div class="form-group">
                                             <label>Email</label>
-                                            <input name="email" type="email" placeholder="name@example.com" class="form-control" required>
+                                            <input name="email" type="email"  maxlength="45" placeholder="name@example.com" class="form-control" required>
                                             
                                </div>
                                <div class="form-group">
                                             <label>Address</label>
-                                            <input name="addr" class="form-control" required>
+                                            <input name="addr"  maxlength="45" class="form-control" required>
                                             
                                </div>
                          
 								<div class="form-group">
                                             <label>Phone Number</label>
-                                            <input name="phone" type ="text" class="form-control" required>
+                                            <input name="phone"  data-regex="[^0-9]+" maxlength="10" type ="text" class="form-control" required>
                                             
                                </div>
 							   
@@ -110,59 +109,78 @@ include('db.php')
 						<?php
 							if(isset($_POST['submit']))
 							{
-							$code1=$_POST['code1'];
-                            $code=$_POST['code']; 
-                            
-                            $pass=$_POST['pass'];
-                            $cpass=$_POST['cpass']; 
-                            $status = true;
-							if($code1!="$code")
-							{
-                            $msg="Invalide code"; 
-                            $status = false;
-                            }
-                            else if($pass!="$cpass")
-                            {
-                                $msg="Password does not match"; 
-                                $status = false;
-                            }
-							else
-							{
+							    $code1=$_POST['code1'];
+                                $code=$_POST['code']; 
+                                
+                                $pass=$_POST['pass'];
+                                $cpass=$_POST['cpass']; 
                                 $status = true;
-									$con=mysqli_connect("localhost","root","password","finalhotel",3306);
-									$check="SELECT * FROM credential WHERE username = '$_POST[uname]'";
-									$rs = mysqli_query($con,$check);    
-									$data = mysqli_fetch_array($rs, MYSQLI_ASSOC);
-									if(mysqli_num_rows($rs) > 0) {
-										echo "<script type='text/javascript'> alert('User Already Exists')</script>";
-										
-									}
-									else
-									{
-										 $new ="Not Conform";
-                                        $newUser="INSERT INTO `credential`(`username`, `password`) VALUES ('$_POST[uname]','$_POST[pass]'))";
-										 if (mysqli_query($con,$newUser))
-										{
-                                        $newCustomer="INSERT INTO `customer`(`customerID`,`name`,`address`,`dateOfBirth`,`email`,`customerUsername`) VALUES ('$_POST[title]','$_POST[fname]','$_POST[lname]','$_POST[email]','$_POST[nation]','$_POST[country]','$_POST[phone]','$_POST[troom]','$_POST[bed]','$_POST[nroom]','$_POST[meal]','$_POST[cin]','$_POST[cout]','$new',datediff('$_POST[cout]','$_POST[cin]'))";
-
-											echo "<script type='text/javascript'> alert('Your Booking application has been sent')</script>";
-										}
-										// else
-										// {
-											echo "<script type='text/javascript'> alert('Error adding user in database')</script>";
-											
-										// }
-									}
-
-							$msg="Your code is correct";
+							    if($code1!="$code")
+							    {
+                                $msg="Invalide code"; 
+                                $status = false;
+                                }
+                                else if($pass!="$cpass")
+                                {
+                                    $msg="Password does not match"; 
+                                    $status = false;
+                                }
+							    else
+							    {
+                                    $status = true;
+							    		$con=mysqli_connect("localhost","root","password","finalhotel",3306);
+							    		$check="SELECT * FROM credential WHERE username = '$_POST[uname]'";
+							    		$rs = mysqli_query($con,$check);    
+							    		$data = mysqli_fetch_array($rs, MYSQLI_ASSOC);
+							    		if(mysqli_num_rows($rs) > 0) {
+							    			echo "<script type='text/javascript'> alert('User Already Exists')</script>";
+							    		}
+							    		else
+							    		{
+                                            $newUser="INSERT INTO `credential`(`username`, `password`) VALUES ('$_POST[uname]','$_POST[pass]')";
+							    			 if (mysqli_query($con,$newUser))
+							    			{
+                                              $result = mysqli_query($con,"SELECT COUNT(*) as result from customer");
+                                              $row = mysqli_fetch_row($result);
+                                              $id = $row[0];
+                                              $id =  $id + 1;
+                                            
+                                            $newCustomer="INSERT INTO `customer`(`customerID`,`name`,`address`,`dateOfBirth`,`email`,`customerUsername`) VALUES ('$id','$_POST[fname]','$_POST[addr]', STR_TO_DATE('$_POST[dob]', '%Y-%m-%d'),'$_POST[email]','$_POST[uname]')";
+                                            
+                                            if (mysqli_query($con,$newCustomer))
+							    			{
+                                                echo "<script type='text/javascript'> alert('customer has been created successfully. Please login to continue')</script>";
+                                            }
+                                            else{
+                                                
+                                                echo '<script type="text/javascript"> alert("Error adding user in database : '. mysqli_error($con) .'")</script>';
+                                                debug_to_console(mysqli_error($con));
+                                            }
+                                        
+                                            }
+                                            else{
+                                                echo "<script type='text/javascript'> alert('Error adding user in database')</script>";
+                                                debug_to_console(mysqli_error($con));
+                                            }
+                                        
+							    		}
+                                    
+                                }
+                                
+                                if($status == false && isset($msg) && $msg != "")
+                                {
+                                                echo "<script type='text/javascript'> alert('". $msg ."')</script>";
+                                                $msg = "";  
+                                }
                             }
-                            
-                            if($status == false && isset($msg) && $msg != "")
-                            {
-                                            echo "<script type='text/javascript'> alert('". $msg ."')</script>";
-                                            $msg = "";  
+
+                            function debug_to_console( $data ) {
+                                $output = $data;
+                                if ( is_array( $output ) )
+                                    $output = implode( ',', $output);
+
+                                echo '<script>console.log( "Debug Objects: ' . $output . '" );</script>';
                             }
-							}
 							?>
 						</form>
 							
@@ -176,21 +194,11 @@ include('db.php')
             
 				
 					</div>
-			 <!-- /. PAGE INNER  -->
             </div>
-         <!-- /. PAGE WRAPPER  -->
         </div>
-     <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
-      <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
-      <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
-    
-   
 </body>
 </html>
