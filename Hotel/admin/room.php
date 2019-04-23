@@ -11,13 +11,9 @@ if(!isset($_SESSION["user"]))
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SUNRISE HOTEL</title>
-	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-     <!-- FontAwesome Styles-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-        <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
-     <!-- Google Fonts-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
@@ -49,12 +45,9 @@ if(!isset($_SESSION["user"]))
                         </li>
                     </ul>
 					
-                    <!-- /.dropdown-user -->
                 </li>
-                <!-- /.dropdown -->
             </ul>
         </nav>
-        <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
@@ -74,7 +67,6 @@ if(!isset($_SESSION["user"]))
             </div>
 
         </nav>
-        <!-- /. NAV SIDE  -->
        
         
        
@@ -113,13 +105,19 @@ if(!isset($_SESSION["user"]))
                                             <label>Bedding Type</label>
                                             <select name="bed" class="form-control" required>
 												<option value selected ></option>
-                                                <option value="Single">Single</option>
-                                                <option value="Double">Double</option>
-												<option value="Triple">Triple</option>
-                                                <option value="Quad">Quad</option>
-												<option value="Triple">None</option>
+                                                <option value="1">Single</option>
+                                                <option value="2">Double</option>
+												<option value="3">Triple</option>
+                                                <option value="4">Quad</option>
+												<option value="2">None</option>
                                                                                              
                                             </select>
+                                            
+                               </div>
+                               
+								<div class="form-group">
+                                            <label>Price</label>
+                                            <input name="price"  data-regex="[^0-9]+" maxlength="5" type ="text" class="form-control" required>
                                             
                                </div>
 							 <input type="submit" name="add" value="Add New" class="btn btn-primary"> 
@@ -130,28 +128,26 @@ if(!isset($_SESSION["user"]))
 							 {
 										$room = $_POST['troom'];
 										$bed = $_POST['bed'];
-										$place = 'Free';
-										
-										$check="SELECT * FROM room WHERE type = '$room' AND bedding = '$bed'";
-										$rs = mysqli_query($con,$check);
-										$data = mysqli_fetch_array($rs, MYSQLI_NUM);
-										if($data[0] > 1) {
-											echo "<script type='text/javascript'> alert('Room Already in Exists')</script>";
+                                        $price = $_POST['price'];
+                                        
+										// $check="SELECT * FROM room WHERE type = '$room' AND bedding = '$bed'";
+										// $rs = mysqli_query($con,$check);
+										// $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+										// if($data[0] > 1) {
+										// 	echo "<script type='text/javascript'> alert('Room Already in Exists')</script>";
 											
-										}
+										// }
 
-										else
-										{
-							 
-										
-										$sql ="INSERT INTO `room`( `type`, `bedding`,`place`) VALUES ('$room','$bed','$place')" ;
+										// else
+										// {
+                                        // }
+										$sql ="INSERT INTO `room`( `occupancy`, `pricePerNight`,`roomType`) VALUES ('$bed','$price','$room')" ;
 										if(mysqli_query($con,$sql))
 										{
 										 echo '<script>alert("New Room Added") </script>' ;
 										}else {
 											echo '<script>alert("Sorry ! Check The System") </script>' ;
 										}
-							 }
 							}
 							
 							?>
@@ -159,8 +155,6 @@ if(!isset($_SESSION["user"]))
                         
                     </div>
                 </div>
-                
-                  
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="panel panel-primary">
@@ -179,9 +173,10 @@ if(!isset($_SESSION["user"]))
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Room ID</th>
+                                            <th>Room Number</th>
                                             <th>Room Type</th>
 											<th>Bedding</th>
+											<th>Price</th>
                                             
                                         </tr>
                                     </thead>
@@ -190,21 +185,23 @@ if(!isset($_SESSION["user"]))
 									<?php
 										while($row= mysqli_fetch_array($re))
 										{
-												$id = $row['id'];
+												$id = $row['roomNumber'];
 											if($id % 2 == 0) 
 											{
 												echo "<tr class=odd gradeX>
-													<td>".$row['id']."</td>
-													<td>".$row['type']."</td>
-												   <th>".$row['bedding']."</th>
+													<td>".$row['roomNumber']."</td>
+													<td>".$row['roomType']."</td>
+												   <td>".$row['occupancy']."</td>
+												   <th>".$row['pricePerNight']."</th>
 												</tr>";
 											}
 											else
 											{
 												echo"<tr class=even gradeC>
-													<td>".$row['id']."</td>
-													<td>".$row['type']."</td>
-												   <th>".$row['bedding']."</th>
+													<td>".$row['roomNumber']."</td>
+													<td>".$row['roomType']."</td>
+                                                   <td>".$row['occupancy']."</td>
+												   <th>".$row['pricePerNight']."</th>
 												</tr>";
 											
 											}
@@ -216,15 +213,6 @@ if(!isset($_SESSION["user"]))
                             
                         </div>
                     </div>
-                    <!--End Advanced Tables -->
-                    
-                       
-                            
-							  
-							 
-							 
-							  
-							  
 							   
                        </div>
                         
@@ -237,21 +225,11 @@ if(!isset($_SESSION["user"]))
             
 				
 					</div>
-			 <!-- /. PAGE INNER  -->
             </div>
-         <!-- /. PAGE WRAPPER  -->
         </div>
-     <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
-      <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
-      <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
-    
-   
 </body>
 </html>

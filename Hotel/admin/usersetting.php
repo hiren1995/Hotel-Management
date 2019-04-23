@@ -87,7 +87,7 @@ ob_start();
                                  
             <?php
 						include ('db.php');
-						$sql = "SELECT * FROM `login`";
+						$sql = "SELECT * FROM `credential`";
 						$re = mysqli_query($con,$sql)
 				?>
                 
@@ -100,51 +100,45 @@ ob_start();
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>User ID</th>
 											<th>User name</th>
                                             <th>Password</th>
-                                            
-											<th>Update</th>
+                                            <th>User Type</th>
 											<th>Remove</th>
-                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
 									<?php
+                                    $id = 0;
 										while($row = mysqli_fetch_array($re))
 										{
 										
-											$id = $row['id'];
-											$us = $row['usname'];
-											$ps = $row['pass'];
+											$us = $row['username'];
+											$ps = $row['password'];
+											$tp = $row['userType'];
 											if($id % 2 ==0 )
 											{
 												echo"<tr class='gradeC'>
-													<td>".$id."</td>
 													<td>".$us."</td>
 													<td>".$ps."</td>
+													<td>".$tp."</td>
 													
-													<td><button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
-															 Update 
-													</button></td>
-													<td><a href=usersettingdel.php?eid=".$id ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
+													
+													<td><a href=usersettingdel.php?eid=".$us ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
 												</tr>";
 											}
 											else
 											{
 												echo"<tr class='gradeU'>
-													<td>".$id."</td>
 													<td>".$us."</td>
-													<td>".$ps."</td>
-													
-													<td><button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
-                              Update 
-                            </button></td>
-													<td><a href=usersettingdel.php?eid=".$id ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
+                                                    <td>".$ps."</td>
+													<td>".$tp."</td>
+								
+													<td><a href=usersettingdel.php?eid=".$us ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
 												</tr>";
 											
-											}
+                                            }
+                                            $id++;
 										
 										}
 										
@@ -207,86 +201,18 @@ ob_start();
 						
 							}
 						header("Location: usersetting.php");
-						}
+                        }
+                        ob_end_flush();
 						?>
 						
-					<div class="panel-body">
-                            
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Change the User name and Password</h4>
-                                        </div>
-										<form method="post">
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                            <label>Change User name</label>
-                                            <input name="usname" value="<?php echo $us; ?>" class="form-control" placeholder="Enter User name">
-											</div>
-										</div>
-										<div class="modal-body">
-                                            <div class="form-group">
-                                            <label>Change Password</label>
-                                            <input name="pasd" value="<?php echo $ps; ?>" class="form-control" placeholder="Enter Password">
-											</div>
-                                        </div>
-										
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-											
-                                           <input type="submit" name="up" value="Update" class="btn btn-primary">
-										  </form>
-										   
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+				
                 </div>
             </div>
-               
-                <!-- /. ROW  -->
-                <?php 
-				if(isset($_POST['up']))
-				{
-					$usname = $_POST['usname'];
-					$passwr = $_POST['pasd'];
-					
-					$upsql = "UPDATE `login` SET `usname`='$usname',`pass`='$passwr' WHERE id = '$id'";
-					if(mysqli_query($con,$upsql))
-					{
-					echo' <script language="javascript" type="text/javascript"> alert("User name and password update") </script>';
-					
-				
-					}
-				
-				header("Location: usersetting.php");
-				
-				}
-				ob_end_flush();
-				
-				
-				
-				
-				?>
-                                
-                  
-            
-			 <!-- /. PAGE INNER  -->
             </div>
-         <!-- /. PAGE WRAPPER  -->
         </div>
-     <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
-      <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
-      <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
     
    
