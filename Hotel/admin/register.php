@@ -1,4 +1,5 @@
 <?php
+ session_start();  
 include('db.php')
 ?>
 <!DOCTYPE html>
@@ -128,7 +129,6 @@ include('db.php')
 							    else
 							    {
                                     $status = true;
-							    		$con=mysqli_connect("localhost","root","password","finalhotel",3306);
 							    		$check="SELECT * FROM credential WHERE username = '$_POST[uname]'";
 							    		$rs = mysqli_query($con,$check);    
 							    		$data = mysqli_fetch_array($rs, MYSQLI_ASSOC);
@@ -137,7 +137,7 @@ include('db.php')
 							    		}
 							    		else
 							    		{
-                                            $newUser="INSERT INTO `credential`(`username`, `password`) VALUES ('$_POST[uname]','$_POST[pass]')";
+                                            $newUser="INSERT INTO `credential`(`username`, `password`,`userType`) VALUES ('$_POST[uname]','$_POST[pass]','CUSTOMER')";
 							    			 if (mysqli_query($con,$newUser))
 							    			{
                                               $result = mysqli_query($con,"SELECT COUNT(*) as result from customer");

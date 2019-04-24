@@ -61,10 +61,16 @@
       // If result matched $myusername and $mypassword, table row must be 1 row
 		
       if($count == 1) {
-         
+        $userData =  mysqli_fetch_array($result);
          $_SESSION['user'] = $myusername;
-         
-         header("location: ..\index.php");
+         $_SESSION['userType'] = $row['userType'];
+        if($row['userType'] == 'ADMIN')
+        {
+          header("location: home.php");
+        }
+        else{
+          header("location: ..\index.php");
+        }
       }else {
          echo '<script>alert("Your Login Name or Password is invalid") </script>' ;
       }
