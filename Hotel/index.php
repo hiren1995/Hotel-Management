@@ -5,7 +5,7 @@ include('db.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>SUNRISE HOTEL</title>
+<title>FANTASTIC FOUR HOTEL</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,7 +43,7 @@ include('db.php');
 						<span class="icon-bar"></span>
 					</button>
 					<h1>
-						<a class="navbar-brand" href="index.php">SUN <span>RISE</span><p class="logo_w3l_agile_caption">Your Dreamy Resort</p></a>
+						<a class="navbar-brand" href="index.php">FANTASCTIC <span>FOUR</span><p class="logo_w3l_agile_caption">Your Dreamy Hotel</p></a>
 				</h1>
 <?php if(isset($_SESSION["user"])): ?>
 <display   <li class="dropdown">
@@ -93,7 +93,7 @@ include('db.php');
 
 							<div class="container">
 								<div class="agileits-banner-info">
-								<h4>SUN RISE</h4>
+								<h4>FANTASTIC FOUR</h4>
 									<h3>We know what you love</h3>
 										<p>Welcome to our hotels</p>
 								</div>	
@@ -104,7 +104,7 @@ include('db.php');
 						<div class="w3layouts-banner-top w3layouts-banner-top1">
 							<div class="container">
 								<div class="agileits-banner-info">
-								<h4>SUN RISE</h4>
+								<h4>FANTASTIC FOUR</h4>
 									<h3>Stay with friends & families</h3>
 										<p>Come & enjoy precious moment with us</p>
 								</div>	
@@ -115,7 +115,7 @@ include('db.php');
 						<div class="w3layouts-banner-top w3layouts-banner-top2">
 							<div class="container">
 								<div class="agileits-banner-info">
-								<h4>SUN RISE</h4>
+								<h4>FANTASTIC FOUR</h4>
 								<h3>want luxurious vacation?</h3>
 										<p>Get accommodation today</p>
 								</div>
@@ -145,28 +145,28 @@ include('db.php');
 						<div class="w3_grid_effect">
 							<span class="cbp-ig-icon w3_road"></span>
 							<h4 class="cbp-ig-title">MASTER BEDROOMS</h4>
-							<span class="cbp-ig-category">SUN RISE</span>
+							<span class="cbp-ig-category">FANTASTIC FOUR</span>
 						</div>
 					</li>
 					<li>
 						<div class="w3_grid_effect">
 							<span class="cbp-ig-icon w3_cube"></span>
 							<h4 class="cbp-ig-title">SEA VIEW BALCONY</h4>
-							<span class="cbp-ig-category">SUN RISE</span>
+							<span class="cbp-ig-category">FANTASTIC FOUR</span>
 						</div>
 					</li>
 					<li>
 						<div class="w3_grid_effect">
 							<span class="cbp-ig-icon w3_users"></span>
 							<h4 class="cbp-ig-title">LARGE CAFE</h4>
-							<span class="cbp-ig-category">SUN RISE</span>
+							<span class="cbp-ig-category">FANTASTIC FOUR</span>
 						</div>
 					</li>
 					<li>
 						<div class="w3_grid_effect">
 							<span class="cbp-ig-icon w3_ticket"></span>
 							<h4 class="cbp-ig-title">WIFI COVERAGE</h4>
-							<span class="cbp-ig-category">SUN RISE</span>
+							<span class="cbp-ig-category">FANTASTIC FOUR</span>
 						</div>
 					</li>
 				</ul>
@@ -178,15 +178,20 @@ include('db.php');
  	<div class="about-wthree" id="about">
 		  <div class="container">
 				   <div class="ab-w3l-spa">
-                            <h3 class="title-w3-agileits title-black-wthree">About Our SUN RISE</h3> 
-						   <p class="about-para-w3ls">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Sed tempus vestibulum lacus blandit faucibus. Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula, at imperdiet urna</p>
+                            <h3 class="title-w3-agileits title-black-wthree">About Our FANTASTIC FOUR</h3> 
+						   <p class="about-para-w3ls"> In an ambience steeped in history, complimented by a richness of culture acquired through centuries, FANTASTIC FOUR HOTEL  is a leading 5 star hotel in PHILADELPHIA  which brings you world class luxury with the warmth of Amarican hospitality in an experience that is unmistakably grand. This 5 star business hotel presents a range of cuisines, accommodation and recreation options that are incomparable with the best in Philadelphia. 
+
+Built around the swimming pool , this contemporary structure offers modern furnishing and comforts, with the azure waters of swimming pool cooling environment during the hottest months. Philadelphia, a rapidly developing industrial city, where the past is still alive in its traditional , its culture and legends. FANTASTIC FOUR HOTEL  is located in the heart of the downtown business and entertainment district.
+
+FANTASTIC FOUR’s reputation as Philadelphia’s leading 5 star luxury hotel is anchored in many factors.  it has been the hotel’s ongoing endeavour to meet and exceed the expectations of our guests. The hotel offers 133 room including 6 suites of plush accommodation and top-of-the-line Business, Conference and Leisure facilities tailored to the requirement of the discerning and modern day business traveller.
+ </p>
 						   <img src="images/about.jpg" class="img-responsive" alt="Hair Salon">
 										<div class="w3l-slider-img">
 											<img src="images/a1.jpg" class="img-responsive" alt="Hair Salon">
 										</div>
                                        <div class="w3ls-info-about">
 										    <h4>You'll love all the amenities we offer!</h4>
-											<p>Lorem ipsum dolor sit amet, ut magna aliqua. </p>
+											<p>We know what your needs </p>
 										</div>
 		          </div>
 		   	<div class="clearfix"> </div>
@@ -203,7 +208,7 @@ include('db.php');
 			 	<div class="advantage-block ">
 					<i class="fa fa-credit-card" aria-hidden="true"></i>
 			 		<h4>Stay First, Pay After! </h4>
-			 		<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.</p>
+			 		<p>You enjoy alot Here</p>
 					<p><i class="fa fa-check" aria-hidden="true"></i>Decorated room, proper air conditioned</p>
 					<p><i class="fa fa-check" aria-hidden="true"></i>Private balcony</p>
 			 		
@@ -213,7 +218,7 @@ include('db.php');
 			 	<div class="advantage-block">
 					<i class="fa fa-clock-o" aria-hidden="true"></i>
 			 		<h4>24 Hour Restaurant</h4>
-			 		<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.</p>
+			 		<p>Availble For Anytime</p>
 					<p><i class="fa fa-check" aria-hidden="true"></i>24 hours room service</p>
 					<p><i class="fa fa-check" aria-hidden="true"></i>24-hour Concierge service</p>
 			 	</div>
@@ -248,9 +253,9 @@ include('db.php');
 						<div class="col-md-6 team-img-w3-agile">
 						</div>
 						<div class="col-md-6 team-Info-agileits">
-							<h4>Lucas Jimenez</h4>
+							<h4>Sagar Pandya</h4>
 							<span>Manager</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+							<p>He is passionate about delivering exceptional service and generous hospitality, from our famous Hotel experience. </p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -258,9 +263,9 @@ include('db.php');
 					<div class="col-md-6 team-img-w3-agile">
 						</div>
 						<div class="col-md-6 team-Info-agileits">
-							<h4>Sarah Connor</h4>
+							<h4>Grace</h4>
 							<span>Receptionist</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>	
+							<p>Our talented employess and very polite </p>	
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -268,9 +273,9 @@ include('db.php');
 						<div class="col-md-6 team-img-w3-agile">
 						</div>
 						<div class="col-md-6 team-Info-agileits">
-							<h4>Ivan Simpson</h4>
+							<h4>Joseph</h4>
 							<span>Manager</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+							<p>Managing all the staff very well</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -278,9 +283,9 @@ include('db.php');
 					<div class="col-md-6 team-img-w3-agile">
 						</div>
 						<div class="col-md-6 team-Info-agileits">
-							<h4>Marc Gutierrez</h4>
+							<h4>Jessica</h4>
 							<span>Receptionist</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+							<p>She is doing Great work.Resolved all the queries as soon as possible</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -295,7 +300,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g1.jpg" class="swipebox"><img src="images/g1.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -303,7 +308,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g2.jpg" class="swipebox"><img src="images/g2.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -311,7 +316,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g3.jpg" class="swipebox"><img src="images/g3.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -319,7 +324,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g4.jpg" class="swipebox"><img src="images/g4.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -327,7 +332,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g5.jpg" class="swipebox"><img src="images/g5.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 					</a>
@@ -335,7 +340,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g6.jpg" class="swipebox"><img src="images/g6.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 					   </div>
 				   </a>
@@ -343,7 +348,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g6.jpg" class="swipebox"><img src="images/g7.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 					   </div>
 				   </a>
@@ -351,7 +356,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g6.jpg" class="swipebox"><img src="images/g8.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 					   </div>
 				   </a>
@@ -359,7 +364,7 @@ include('db.php');
 					<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g9.jpg" class="swipebox"><img src="images/g9.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -367,7 +372,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g10.jpg" class="swipebox"><img src="images/g10.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -375,7 +380,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g4.jpg" class="swipebox"><img src="images/g4.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -383,7 +388,7 @@ include('db.php');
 				<div class="col-md-3 gallery-grid gallery1">
 					<a href="images/g2.jpg" class="swipebox"><img src="images/g2.jpg" class="img-responsive" alt="/">
 						<div class="textbox">
-						<h4>SUN RISE</h4>
+						<h4>FANTASTIC FOUR</h4>
 							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
 						</div>
 				</a>
@@ -498,16 +503,16 @@ include('db.php');
 		<div style="text-align: center;">
 			<div class="contact-agileits">
 				<h4>Contact Us</h4>
-			<p class="contact-agile1"><strong>Phone :</strong>+94 (65)222-44-55</p>
-			<p class="contact-agile1"><strong>Email :</strong> <a href="mailto:name@example.com">INFO@SUNRISE.COM</a></p>
-			<p class="contact-agile1"><strong>Address :</strong> New Kalmunai Road, Batticaloa, Sri Lanka</p>
+			<p class="contact-agile1"><strong>Phone :</strong>+1 2158428336</p>
+			<p class="contact-agile1"><strong>Email :</strong> <a href="mailto:name@example.com">INFO@FANTASTICFOUR.COM</a></p>
+			<p class="contact-agile1"><strong>Address :</strong> 5600 CITY AVENUE, PHILADELPHIA, USA</p>
 			</div>
 		<div class="clearfix"></div>
 	</div>
 </section>
 <!-- /contact -->
 			<div class="copy">
-		        <p>© 2017 SUNRISE . All Rights Reserved | Design by <a href="index.php">SUNRISE</a> </p>
+		        <p>© 2019 FANTASTIC FOUR . All Rights Reserved | Design by <a href="index.php">FANTASTICFOUR</a> </p>
 		    </div>
 <!--/footer -->
 <!-- js -->
