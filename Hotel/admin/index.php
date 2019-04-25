@@ -32,7 +32,7 @@
         </form>
       </div> <!-- end login -->
     </div>
- <div class="bottom">  <h3><a href="../index.php">Hotel Name Login Page</a></h3></div>
+ <div class="bottom">  <h3><a href="../index.php">WELLCOME TO FANTASCTIC FOUR</a></h3></div>
   
  <script src="assets/js/jquery-1.10.2.js"></script>
       <!-- Bootstrap Js -->

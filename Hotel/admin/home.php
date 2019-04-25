@@ -4,13 +4,14 @@ if(!isset($_SESSION["user"]))
 {
 header("location:index.php");
 }
+include('db.php');
 ?> 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrator	
+    <title>Dashboard	
     </title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -50,20 +51,26 @@ header("location:index.php");
               </i>
             </a>
             <ul class="dropdown-menu dropdown-user">
+            <?php  
+            if($_SESSION["userType"] == "ADMIN")
+{
+echo"
               <li>
-                <a href="usersetting.php">
-                  <i class="fa fa-user fa-fw">
+                <a href='usersetting.php'>
+                  <i class='fa fa-user fa-fw'>
                   </i> User Profile
                 </a>
               </li>
               <li>
-                <a href="settings.php">
-                  <i class="fa fa-gear fa-fw">
+                <a href='settings.php'>
+                  <i class='fa fa-gear fa-fw'>
                   </i> Settings
                 </a>
               </li>
-              <li class="divider">
-              </li>
+              <li class='divider'>
+              </li>";
+}
+?> 
               <li>
                 <a href="logout.php">
                   <i class="fa fa-sign-out fa-fw">
@@ -80,30 +87,36 @@ header("location:index.php");
       <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
           <ul class="nav" id="main-menu">
+          <li>
+              <a href="../index.php">
+                <i class="fa fa-home">
+                </i> Home
+              </a>
+            </li>
             <li>
               <a class="active-menu" href="home.php">
                 <i class="fa fa-dashboard">
                 </i> Status
               </a>
             </li>
-            <li>
-              <a href="roombook.php">
-                <i class="fa fa-bar-chart-o">
-                </i> Room Booking
-              </a>
-            </li>
-            <li>
-              <a href="payment.php">
-                <i class="fa fa-qrcode">
-                </i> Payment
-              </a>
-            </li>
-            <li>
-              <a  href="profit.php">
-                <i class="fa fa-qrcode">
-                </i> Profit
-              </a>
-            </li>
+            <?php  
+if($_SESSION["userType"] == "ADMIN")
+{
+echo"
+<li>
+  <a href='payment.php'>
+    <i class='fa fa-qrcode'>
+    </i> Payment
+  </a>
+</li>
+<li>
+  <a  href='profit.php'>
+    <i class='fa fa-qrcode'>
+    </i> Profit
+  </a>
+</li>";
+}
+?> 
             <li>
               <a href="logout.php">
                 <i class="fa fa-sign-out fa-fw">
@@ -125,22 +138,6 @@ header("location:index.php");
               </h1>
             </div>
           </div>
-          <!-- /. ROW  -->
-          <?php
-            include ('db.php');
-            $sql = "select * from customer_has_room";
-            $re = mysqli_query($con,$sql);
-            $c =0;
-            while($row=mysqli_fetch_array($re) )
-            {
-            $new = $row['startDate'];
-            $cin = $row['endDate'];
-            $id = $row['roomNumber'];
-          
-            $c = $c + 1;
-            
-            }
-            ?>
           <div class="row">
             <div class="col-md-12">
               <div class="panel panel-default">
@@ -154,9 +151,6 @@ header("location:index.php");
                           <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                             <button class="btn btn-default" type="button">
                               Room Bookings  
-                              <span class="badge">
-                                <?php echo $c ; ?>
-                              </span>
                             </button>
                           </a>
                         </h4>
@@ -193,6 +187,15 @@ header("location:index.php");
                                     inner join customer_has_room t2 on t2.customerID  = t1.customerID 
                                     inner join room t3 on t3.roomNumber = t2.roomNumber;
                                     ";
+                                    if($_SESSION["userType"] == "CUSTOMER")
+                                    {
+                                      $user = $_SESSION["user"];
+                                      $tsql = "SELECT t2.roomNumber,t1.name,t1.email,t3.roomType,t3.occupancy,t2.startDate,t2.endDate from customer t1 
+                                      inner join customer_has_room t2 on t2.customerID  = t1.customerID 
+                                      inner join room t3 on t3.roomNumber = t2.roomNumber where t1.customerUsername = '$user';
+                                      ";
+                                    }
+
                                     $tre = mysqli_query($con,$tsql);
                                     while($trow=mysqli_fetch_array($tre) )
                                     {	
@@ -213,7 +216,6 @@ header("location:index.php");
                               </div>
                             </div>
                           </div>
-                          <!-- End  Basic Table  --> 
                         </div>
                       </div>
                     </div>

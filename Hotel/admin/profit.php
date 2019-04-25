@@ -71,10 +71,6 @@ if(!isset($_SESSION["user"]))
                     <li>
                         <a href="home.php"><i class="fa fa-dashboard"></i> Status</a>
                     </li>
-                   
-					<li>
-                        <a href="roombook.php"><i class="fa fa-bar-chart-o"></i>Room Booking</a>
-                    </li>
                     <li>
                         <a  href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
                     </li>
@@ -85,8 +81,6 @@ if(!isset($_SESSION["user"]))
                     <li>
                         <a href="logout.php" ><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
-                    
-
                     
             </div>
 

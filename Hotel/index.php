@@ -53,7 +53,8 @@ include('db.php');
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <ul class="dropdown-menu">
-										<li><a href="admin/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+										<li><a href="admin/home.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
+										<li><a href="admin/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a> </li>
                     </ul>
                 </li>>
 <?php else: ?>
