@@ -21,11 +21,9 @@ include('db.php');
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
-<!--fonts-->
 <link href="//fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Federo" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-<!--//fonts-->
 </head>
 <body>
 <!-- header -->
@@ -42,12 +40,12 @@ include('db.php');
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<h1>
+					<h2>
 						<a class="navbar-brand" href="index.php">FANTASCTIC <span>FOUR</span><p class="logo_w3l_agile_caption">Your Dreamy Hotel</p></a>
-				</h1>
+				</h2>
 <?php if(isset($_SESSION["user"])): ?>
 <display   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" style="font-size: x-small;" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" style="font-size: smaller; color: #e0dcdc;" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
                         <strong><?php  echo($_SESSION['user']) ?></strong>
                         <span class="glyphicon glyphicon-chevron-down"></span>
@@ -56,7 +54,7 @@ include('db.php');
 										<li><a href="admin/home.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
 										<li><a href="admin/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a> </li>
                     </ul>
-                </li>>
+                </li>
 <?php else: ?>
 <display>
 <?php endif; ?>
@@ -612,22 +610,7 @@ fit: true
 });
 </script>
 <!--//tabs-->
-<!-- smooth scrolling -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-		/*
-			var defaults = {
-			containerID: 'toTop', // fading element id
-			containerHoverID: 'toTopHover', // fading element hover id
-			scrollSpeed: 1200,
-			easingType: 'linear' 
-			};
-		*/								
-		$().UItoTop({ easingType: 'easeOutQuart' });
-		});
-	</script>
 
-<!-- //smooth scrolling -->
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 </body>
 </html>
