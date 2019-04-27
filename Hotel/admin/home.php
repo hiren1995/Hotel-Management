@@ -183,14 +183,14 @@ echo"
                                   </thead>
                                   <tbody>
                                     <?php
-                                    $tsql = "SELECT t2.roomNumber,t1.name,t1.email,t3.roomType,t3.occupancy,t2.startDate,t2.endDate from customer t1 
+                                    $tsql = "SELECT t2.roomNumber,t1.customerID,t1.name,t1.email,t3.roomType,t3.occupancy,t2.startDate,t2.endDate from customer t1 
                                     inner join customer_has_room t2 on t2.customerID  = t1.customerID 
                                     inner join room t3 on t3.roomNumber = t2.roomNumber;
                                     ";
                                     if($_SESSION["userType"] == "CUSTOMER")
                                     {
                                       $user = $_SESSION["user"];
-                                      $tsql = "SELECT t2.roomNumber,t1.name,t1.email,t3.roomType,t3.occupancy,t2.startDate,t2.endDate from customer t1 
+                                      $tsql = "SELECT t2.roomNumber,t1.customerID,t1.name,t1.email,t3.roomType,t3.occupancy,t2.startDate,t2.endDate from customer t1 
                                       inner join customer_has_room t2 on t2.customerID  = t1.customerID 
                                       inner join room t3 on t3.roomNumber = t2.roomNumber where t1.customerUsername = '$user';
                                       ";
@@ -199,15 +199,17 @@ echo"
                                     $tre = mysqli_query($con,$tsql);
                                     while($trow=mysqli_fetch_array($tre) )
                                     {	
+                                      $cin = date("m-d-y", strtotime($trow['startDate']));
+                                      $cout = date("m-d-y", strtotime($trow['endDate']));
                                     echo"<tr>
                                     <th>".$trow['roomNumber']."</th>
                                     <th>".$trow['name']."</th>
                                     <th>".$trow['email']."</th>
                                     <th>".$trow['roomType']."</th>
                                     <th>".$trow['occupancy']."</th>
-                                    <th>".$trow['startDate']."</th>
-                                    <th>".$trow['endDate']."</th>
-                                    <th><a href='roombook.php?rid=".$trow['roomNumber']." ' class='btn btn-primary'>CheckOut</a></th>
+                                    <th>".$cin."</th>
+                                    <th>".$cout."</th>
+                                    <th><a href='roombook.php?rid=".$trow['roomNumber']."%".$trow['customerID']."' class='btn btn-primary'>CheckOut</a></th>
                                     </tr>";
                                     }
                                     ?>
