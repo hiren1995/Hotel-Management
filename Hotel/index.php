@@ -509,26 +509,18 @@ FANTASTIC FOUR’s reputation as Philadelphia’s leading 5 star luxury hotel is
 		<div class="clearfix"></div>
 	</div>
 </section>
-<!-- /contact -->
 			<div class="copy">
 		        <p>© 2019 FANTASTIC FOUR . All Rights Reserved | Design by <a href="index.php">FANTASTICFOUR</a> </p>
 		    </div>
-<!--/footer -->
-<!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-<!-- contact form -->
 <script src="js/jqBootstrapValidation.js"></script>
 
-<!-- /contact form -->	
-<!-- Calendar -->
 		<script src="js/jquery-ui.js"></script>
 		<script>
 				$(function() {
 				$( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
 				});
 		</script>
-<!-- //Calendar -->
-<!-- gallery popup -->
 <link rel="stylesheet" href="css/swipebox.css">
 				<script src="js/jquery.swipebox.min.js"></script> 
 					<script type="text/javascript">
@@ -536,9 +528,6 @@ FANTASTIC FOUR’s reputation as Philadelphia’s leading 5 star luxury hotel is
 							$(".swipebox").swipebox();
 						});
 					</script>
-<!-- //gallery popup -->
-<!-- start-smoth-scrolling -->
-<!-- <script type="text/javascript" src="js/easing.js"></script> -->
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -547,45 +536,20 @@ FANTASTIC FOUR’s reputation as Philadelphia’s leading 5 star luxury hotel is
 		});
 	});
 </script>
-<!-- start-smoth-scrolling -->
-<!-- flexSlider -->
-				<script defer src="js/jquery.flexslider.js"></script>
-				<script type="text/javascript">
-				$(window).load(function(){
-				  $('.flexslider').flexslider({
-					animation: "slide",
-					start: function(slider){
-					  $('body').removeClass('loading');
-					}
-				  });
-				});
-			  </script>
-			<!-- //flexSlider -->
+				
 <script src="js/responsiveslides.min.js"></script>
 			<script>
-						// You can also use "$(window).load(function() {"
 						$(function () {
-						  // Slideshow 4
 						  $("#slider4").responsiveSlides({
 							auto: true,
 							pager:true,
 							nav:false,
 							speed: 500,
 							namespace: "callbacks",
-							before: function () {
-							  $('.events').append("<li>before event fired.</li>");
-							},
-							after: function () {
-							  $('.events').append("<li>after event fired.</li>");
-							}
 						  });
 					
 						});
 			</script>
-		<!--search-bar-->
-		<script src="js/main.js"></script>	
-<!--//search-bar-->
-<!--tabs-->
 <script src="js/easy-responsive-tabs.js"></script>
 <script>
 $(document).ready(function () {
@@ -602,14 +566,9 @@ $name.text($tab.text());
 $info.show();
 }
 });
-$('#verticalTab').easyResponsiveTabs({
-type: 'vertical',
-width: 'auto',
-fit: true
-});
+
 });
 </script>
-<!--//tabs-->
 
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 </body>

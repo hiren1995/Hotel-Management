@@ -10,7 +10,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>SUN RISE ADMIN</title>
+  <title>ADMIN</title>
 
   <link href="assets/css/bootstrap.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css">
@@ -50,7 +50,7 @@
       
       $myusername = mysqli_real_escape_string($con,$_POST['user']);
       $mypassword = mysqli_real_escape_string($con,$_POST['pass']); 
-      
+      $myusername = strtoupper($myusername);
       $sql = "SELECT * FROM credential WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($con,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
