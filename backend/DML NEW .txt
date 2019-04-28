@@ -1,0 +1,35 @@
+INSERT INTO room_service VALUES (1001, 'Jodie Bravo', 55000);
+INSERT INTO room_service VALUES (1002, 'Brandon Bills', 60000);
+INSERT INTO room_service VALUES (1003, 'Jack Smugger', 70000);
+INSERT INTO room_service VALUES (1004, 'Henri Lover', 70000);
+
+INSERT INTO room VALUES (101, 1, 150, 'Single', 1001);
+INSERT INTO room VALUES (102, 1, 150, 'Single', 1001);
+INSERT INTO room VALUES (103, 1, 150, 'Single', 1001);
+INSERT INTO room VALUES (104, 1, 150, 'Single', 1001);
+INSERT INTO room VALUES (201, 2, 180, 'Guest', 1002);
+INSERT INTO room VALUES (202, 2, 180, 'Guest', 1002);
+INSERT INTO room VALUES (203, 2, 180, 'Guest', 1002);
+INSERT INTO room VALUES (204, 2, 180, 'Guest', 1002);
+INSERT INTO room VALUES (301, 3, 220, 'Luxury', 1003);
+INSERT INTO room VALUES (302, 3, 220, 'Luxury', 1003);
+INSERT INTO room VALUES (303, 3, 220, 'Luxury', 1003);
+INSERT INTO room VALUES (304, 3, 220, 'Luxury', 1003);
+INSERT INTO room VALUES (401, 4, 320, 'Deluxe', 1004);
+INSERT INTO room VALUES (402, 4, 320, 'Deluxe', 1004);
+INSERT INTO room VALUES (403, 4, 320, 'Deluxe', 1004);
+
+INSERT INTO accountant VALUES (2001, 'Josh Smith', 45000);
+INSERT INTO accountant VALUES (2002, 'Megan MacDribble', 50000);
+
+INSERT INTO credential VALUES ('testCustomer1', 'password', 'customer');
+INSERT INTO credential VALUES ('joseph.dougherty', 'jdougherty1', 'admin');
+INSERT INTO credential VALUES ('sagar.pandya', 'spandya1', 'admin');
+INSERT INTO credential VALUES ('jessica.atoo', 'jatoo1', 'admin');
+
+### DATE format : YYYYMMDD ###
+INSERT INTO customer
+VALUES (null, 'Test Customer 1', '8000 First Street, Philadelphia PA', 19950925,
+        'testMail@gmail.com', 'testCustomer1');
+
+INSERT INTO customer_has_room VALUES (3, 101, 20190427, 20190430);

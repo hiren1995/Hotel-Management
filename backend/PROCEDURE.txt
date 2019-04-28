@@ -1,0 +1,33 @@
+DROP PROCEDURE IF EXISTS determineCostOfBill;
+DELIMITER $$
+CREATE PROCEDURE determineCostOfBill(IN numOfNights INT, IN pricePerNight INT, OUT totalCost INT)
+BEGIN
+  SET totalCost = numOfNights * pricePerNight;
+END $$
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS insertIntoBill;
+DELIMITER $$
+CREATE PROCEDURE insertIntoBill(IN startDate DATE, IN endDate DATE, IN pricePerNight VARCHAR(20), IN custID INT, IN accID INT)
+BEGIN
+  CALL determineCostOfBill(DATEDIFF(endDate, startDate), pricePerNight, @totalCost);
+  INSERT INTO bill VALUES (null, CURRENT_TIMESTAMP(), @totalCost, custID, accID);
+END $$
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS createAccount;
+DELIMITER $$
+use team_c_db $$
+CREATE PROCEDURE createAccount(IN user_name VARCHAR(20), IN pass VARCHAR(20))
+BEGIN
+  IF NOT EXISTS (SELECT * FROM credential WHERE credential.username = user_name)
+    AND user_name IS NOT NULL AND pass IS NOT NULL
+    THEN
+      INSERT INTO credential VALUES (user_name, pass, 'customer');
+    ELSE
+      SELECT 'Username already exists or an error occurred' as result;
+  END IF;
+END $$
+DELIMITER ;

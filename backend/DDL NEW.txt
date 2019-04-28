@@ -1,0 +1,75 @@
+use team_c_db;
+show tables;
+
+CREATE TABLE room_service(
+  employeeID INT NOT NULL,
+  employeeName VARCHAR(45) NOT NULL,
+  salary INT NOT NULL,
+  PRIMARY KEY(employeeID)
+);
+
+CREATE TABLE room(
+  roomNumber INT NOT NULL,
+  occupancy INT NOT NULL,
+  pricePerNight DECIMAL(5,2) NOT NULL,
+  employeeID INT NOT NULL,
+  PRIMARY KEY(roomNumber),
+  FOREIGN KEY (employeeID) REFERENCES room_service(employeeID)
+                 ON UPDATE CASCADE
+);
+
+ALTER TABLE room ADD COLUMN roomType VARCHAR(20) NOT NULL AFTER pricePerNight;
+
+CREATE TABLE credential(
+  username VARCHAR(20) NOT NULL,
+  password VARCHAR(20) NOT NULL,
+  PRIMARY KEY(username)
+);
+
+ALTER TABLE credential ADD COLUMN userType VARCHAR(12) NOT NULL;
+
+CREATE TABLE customer(
+  customerID INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(45) NOT NULL,
+  address VARCHAR(45) NOT NULL,
+  dateOfBirth DATE NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  customerUsername VARCHAR(20) NOT NULL,
+  PRIMARY KEY (customerID),
+  FOREIGN KEY (customerUsername) REFERENCES credential(username)
+                                ON DELETE CASCADE
+                                ON UPDATE CASCADE
+);
+
+CREATE TABLE accountant(
+  accountantID INT NOT NULL,
+  accountantName VARCHAR(45) NOT NULL,
+  salary INT NOT NULL,
+  PRIMARY KEY (accountantID)
+);
+
+CREATE TABLE bill(
+  billID INT NOT NULL AUTO_INCREMENT,
+  dateOfPayment DATETIME NOT NULL,
+  costOfBill INT NOT NULL,
+  customerID INT,
+  accountantID INT NOT NULL,
+  PRIMARY KEY (billID),
+  FOREIGN KEY (customerID) REFERENCES customer(customerID)
+                          ON DELETE CASCADE
+                          ON UPDATE CASCADE,
+  FOREIGN KEY (accountantID) REFERENCES accountant(accountantID)
+                          ON UPDATE CASCADE
+);
+
+CREATE TABLE customer_has_room(
+  customerID INT NOT NULL,
+  roomNumber INT NOT NULL,
+  startDate DATE NOT NULL,
+  endDate DATE NOT NULL,
+  FOREIGN KEY (customerID) REFERENCES customer(customerID)
+                          ON DELETE CASCADE,
+  FOREIGN KEY (roomNumber) REFERENCES room(roomNumber)
+                          ON UPDATE CASCADE,
+  PRIMARY KEY(customerID, roomNumber)
+);

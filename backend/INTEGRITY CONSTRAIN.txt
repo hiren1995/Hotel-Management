@@ -1,0 +1,23 @@
+This file contains all of the integrity constraints that were used when creating the tables in DB.
+
+table: room
+FOREIGN KEY (employeeID) REFERENCES room_service(employeeID)
+                 ON UPDATE CASCADE
+
+table: customer
+FOREIGN KEY (customerUsername) REFERENCES credential(username)
+                                ON DELETE CASCADE
+                                ON UPDATE CASCADE
+
+table: bill
+  FOREIGN KEY (customerID) REFERENCES customer(customerID)
+                          ON DELETE CASCADE
+                          ON UPDATE CASCADE,
+  FOREIGN KEY (accountantID) REFERENCES accountant(accountantID)
+                          ON UPDATE CASCADE
+
+table: customer_has_room
+  FOREIGN KEY (customerID) REFERENCES customer(customerID)
+                          ON DELETE CASCADE,
+  FOREIGN KEY (roomNumber) REFERENCES room(roomNumber)
+                          ON UPDATE CASCADE,
