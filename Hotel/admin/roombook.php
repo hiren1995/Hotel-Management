@@ -116,12 +116,7 @@ echo"
     </i> Payment
   </a>
 </li>
-<li>
-  <a  href='profit.php'>
-    <i class='fa fa-qrcode'>
-    </i> Profit
-  </a>
-</li>";
+W";
 }
 ?> 
                     <li>

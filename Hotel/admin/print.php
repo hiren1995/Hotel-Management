@@ -255,7 +255,7 @@ tr:hover .cut { opacity: 1; }
 		<header>
 			<h1>Invoice</h1>
 			<address >
-				<p>SUN RISE HOTEL,</p>
+				<p>Fantastic Four HOTEL,</p>
 				<p>New Kalmunani Road,<br>Battialoa,<br>Sri Lanka.</p>
 				<p>(+94) 65 222 44 55</p>
 			</address>

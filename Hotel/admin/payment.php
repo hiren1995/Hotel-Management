@@ -10,7 +10,7 @@ if(!isset($_SESSION["user"]))
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SUNRISE HOTEL</title>
+    <title>Fantastic Four HOTEL</title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -71,9 +71,6 @@ if(!isset($_SESSION["user"]))
                     </li>
                     <li>
                         <a class="active-menu" href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
-                    </li>
-                    <li>
-                        <a  href="profit.php"><i class="fa fa-qrcode"></i> Profit</a>
                     </li>
                     <li>
                         <a href="logout.php" ><i class="fa fa-sign-out fa-fw"></i> Logout</a>
