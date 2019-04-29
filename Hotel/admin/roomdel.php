@@ -49,7 +49,7 @@ $rre=mysqli_query($con,$rsql);
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="usersetting.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="settings.php"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
@@ -133,15 +133,21 @@ $rre=mysqli_query($con,$rsql);
 							 {
 								$did = $_POST['id'];
 								
-								
-								$sql ="DELETE FROM `room` WHERE roomNumber = '$did'" ;
-								if(mysqli_query($con,$sql))
-								{
-								 echo '<script type="text/javascript">alert("Deleted the Room") </script>' ;
-										
-										header("Location: roomdel.php");
-								}else {
-									echo '<script>alert("Sorry ! Check The System") </script>' ;
+								$check="SELECT * FROM customer_has_room WHERE roomNumber = '$did'";
+								$rs = mysqli_query($con,$check);   
+								$data = mysqli_fetch_array($rs, MYSQLI_ASSOC);
+								if(mysqli_num_rows($rs) > 0) {
+									echo "<script type='text/javascript'> alert('Cannot delete room because the room is currently reserved.')</script>";
+								}
+								else{
+									$sql ="DELETE FROM `room` WHERE roomNumber = '$did'" ;
+									if(mysqli_query($con,$sql))
+									{
+									 echo '<script type="text/javascript">alert("Deleted the Room") </script>' ;
+									echo "<script type='text/javascript'> window.location='roomdel.php'</script>";
+									}else {
+										echo '<script>alert("Error while deleting room") </script>' ;
+									}
 								}
 							 }
 							
