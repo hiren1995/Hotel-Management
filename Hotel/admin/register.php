@@ -7,7 +7,7 @@ include('db.php')
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REGISTRATION SUNRISE HOTEL</title>
+    <title>REGISTRATION FANTASTIC FOUR HOTEL</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
