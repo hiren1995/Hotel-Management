@@ -11,7 +11,7 @@ if(isset($_SESSION["user"]) == false)
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RESERVATION SUNRISE HOTEL</title>
+    <title>RESERVATION FANTASTIC FOUR HOTEL</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
