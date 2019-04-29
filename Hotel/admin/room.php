@@ -90,6 +90,10 @@ if(!isset($_SESSION["user"]))
                         </div>
                         <div class="panel-body">
 						<form name="form" method="post">
+                        <div class="form-group">
+                                            <label>Room Number</label>
+                                            <input name="rnum"  data-regex="[^0-9]+" maxlength="5" type ="text" class="form-control" required>
+                               </div>
                             <div class="form-group">
                                             <label>Type Of Room *</label>
                                             <select name="troom"  class="form-control" required>
@@ -127,27 +131,27 @@ if(!isset($_SESSION["user"]))
 							 if(isset($_POST['add']))
 							 {
 										$room = $_POST['troom'];
+										$roomNo = $_POST['rnum'];
 										$bed = $_POST['bed'];
                                         $price = $_POST['price'];
                                         
-										// $check="SELECT * FROM room WHERE type = '$room' AND bedding = '$bed'";
-										// $rs = mysqli_query($con,$check);
-										// $data = mysqli_fetch_array($rs, MYSQLI_NUM);
-										// if($data[0] > 1) {
-										// 	echo "<script type='text/javascript'> alert('Room Already in Exists')</script>";
+										 $check="SELECT * FROM room WHERE roomNumber = '$roomNo'";
+										 $rs = mysqli_query($con,$check);
+										 $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+										if($data[0] > 1) {
+											echo "<script type='text/javascript'> alert('Room Already in Exists')</script>";
 											
-										// }
-
-										// else
-										// {
-                                        // }
-										$sql ="INSERT INTO `room`( `occupancy`, `pricePerNight`,`roomType`) VALUES ('$bed','$price','$room')" ;
-										if(mysqli_query($con,$sql))
-										{
-										 echo '<script>alert("New Room Added") </script>' ;
-										}else {
-											echo '<script>alert("Sorry ! Check The System") </script>' ;
-										}
+                                        }
+                                        else{
+                                            $sql ="INSERT INTO `room`( `roomNumber`,`occupancy`, `pricePerNight`,`roomType`) VALUES ('$roomNo','$bed','$price','$room')" ;
+                                            if(mysqli_query($con,$sql))
+                                            {
+                                             echo '<script>alert("New Room Added") </script>' ;
+                                            }else {
+                                                echo '<script>alert("Error while adding room") </script>' ;
+                                            }
+                                        }
+										
 							}
 							
 							?>
