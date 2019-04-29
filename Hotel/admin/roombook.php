@@ -7,7 +7,7 @@ if(!isset($_SESSION["user"]))
 ?> 
 
 <?php
-		if(!isset($_GET["rid"]))
+		if(!isset($_GET["rid"]) || !isset($_GET["cid"]))
 		{
 				
 			 header("location:index.php");
@@ -16,11 +16,10 @@ if(!isset($_SESSION["user"]))
 				$curdate=date("Y/m/d");
 				include ('db.php');
 				$id = $_GET['rid'];
-				$str_arr = explode ("%", $id);
-				$custID = $str_arr[1];
+				$custID = $_GET['cid'];
 				$sql = "SELECT t1.*,t3.*,t2.startDate,t2.endDate from customer t1 
 				inner join customer_has_room t2 on t2.customerID  = t1.customerID 
-				inner join room t3 on t3.roomNumber = t2.roomNumber where t2.roomNumber = '$str_arr[0]' and t2.customerid = '$str_arr[1]'";
+				inner join room t3 on t3.roomNumber = t2.roomNumber where t2.roomNumber = '$id' and t2.customerid = '$custID'";
 				
 				$re = mysqli_query($con,$sql);
 				while($row=mysqli_fetch_array($re))

@@ -12,7 +12,7 @@ ob_start();
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SUNRISE HOTEL</title>
+    <title>FANTASTIC FOUR HOTEL</title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -79,7 +79,7 @@ ob_start();
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                           ADMINISTRATOR<small> accounts </small>
+                           CUSTOMER<small> accounts </small>
                         </h1>
                     </div>
                 </div> 
@@ -87,10 +87,9 @@ ob_start();
                                  
             <?php
 						include ('db.php');
-						$sql = "SELECT * FROM `credential`";
+						$sql = "SELECT * FROM `credential` where userType = 'customer'";
 						$re = mysqli_query($con,$sql)
 				?>
-                
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
@@ -103,7 +102,7 @@ ob_start();
 											<th>User name</th>
                                             <th>Password</th>
                                             <th>User Type</th>
-											<th>Remove</th>
+											<th>Update password</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -123,8 +122,9 @@ ob_start();
 													<td>".$ps."</td>
 													<td>".$tp."</td>
 													
-													
-													<td><a href=usersettingdel.php?eid=".$us ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
+                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-userid=".$us." data-target='#myModal'>
+                                                    Update 
+                                                  </button></td>
 												</tr>";
 											}
 											else
@@ -133,8 +133,9 @@ ob_start();
 													<td>".$us."</td>
                                                     <td>".$ps."</td>
 													<td>".$tp."</td>
-								
-													<td><a href=usersettingdel.php?eid=".$us ." <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
+                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-userid=".$us." data-target='#myModal'>
+                                                    Update 
+                                                  </button></td>
 												</tr>";
 											
                                             }
@@ -150,36 +151,39 @@ ob_start();
                             
                         </div>
                     </div>
-                    <!--End Advanced Tables -->
-					<div class="panel-body">
-                            <button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal1">
-															Add New Admin
-													</button>
-                            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="panel-body">
+                            
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Add the User name and Password</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Update Password</h4>
                                         </div>
 										<form method="post">
+
                                         <div class="modal-body">
                                             <div class="form-group">
-                                            <label>Add new User name</label>
-                                            <input name="newus"  class="form-control" placeholder="Enter User name">
+                                            <label>Username</label>
+                                            <input name="hduname" autocomplete="off" class="form-control" readonly="readonly" required>
+											</div>
+										</div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                            <label>Enter new password</label>
+                                            <input name="pass" type="password"  maxlength="20" autocomplete="off" class="form-control" required>
 											</div>
 										</div>
 										<div class="modal-body">
                                             <div class="form-group">
-                                            <label>New Password</label>
-                                            <input name="newps"  class="form-control" placeholder="Enter Password">
+                                            <label>Change Password</label>
+                                            <input name="cpass" type="password"  maxlength="20" autocomplete="off" class="form-control" required>
 											</div>
                                         </div>
 										
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-											
-                                           <input type="submit" name="in" value="Add" class="btn btn-primary">
+                                           <input type="submit" name="up" value="Update" class="btn btn-primary">
 										  </form>
 										   
                                         </div>
@@ -187,27 +191,39 @@ ob_start();
                                 </div>
                             </div>
                         </div>
-						<?php
-						if(isset($_POST['in']))
-						{
-							$newus = $_POST['newus'];
-							$newps = $_POST['newps'];
-							
-							$newsql ="Insert into login (usname,pass) values ('$newus','$newps')";
-							if(mysqli_query($con,$newsql))
-							{
-							echo' <script language="javascript" type="text/javascript"> alert("User name and password Added") </script>';
-							
-						
-							}
-						header("Location: usersetting.php");
-                        }
-                        ob_end_flush();
-						?>
-						
-				
-                </div>
+                
+				 </div>
             </div>
+            <?php 
+				if(isset($_POST['up']))
+				{
+					$pass = $_POST['pass'];
+					$cpass = $_POST['cpass'];
+					$cruname = $_POST['hduname'];
+                    
+                    if($pass!="$cpass")
+                    {
+                        echo' <script language="javascript" type="text/javascript"> alert("password not match") </script>';
+                    }
+                    else{
+
+                            $upsql = "UPDATE `credential` SET `password`='$pass' WHERE username = '$cruname'";
+                            if(mysqli_query($con,$upsql))
+                            {
+                            echo' <script language="javascript" type="text/javascript"> alert("password updated") </script>';
+							echo "<script type='text/javascript'> window.location='usersetting.php'</script>";
+                            }
+                            else{
+                            echo' <script language="javascript" type="text/javascript"> alert("Error while updating password") </script>';
+                            }
+                                
+                        }
+				}
+				ob_end_flush();
+				
+				?>
+                         
+
             </div>
         </div>
     <script src="assets/js/jquery-1.10.2.js"></script>
@@ -218,3 +234,7 @@ ob_start();
    
 </body>
 </html>
+<script language="javascript" type="text/javascript">$('#myModal').on('show.bs.modal', function(e) {
+    var userid = $(e.relatedTarget).data('userid');
+    $(document).find('input[name="hduname"]').val(userid);
+});</script>

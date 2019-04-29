@@ -11,17 +11,10 @@ if(!isset($_SESSION["user"]))
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fantastic Four HOTEL</title>
-	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-     <!-- FontAwesome Styles-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-     <!-- Morris Chart Styles-->
-   
-        <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
-     <!-- Google Fonts-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     <!-- TABLE STYLES-->
     <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
@@ -52,23 +45,19 @@ if(!isset($_SESSION["user"]))
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-user -->
                 </li>
-                <!-- /.dropdown -->
             </ul>
         </nav>
-        <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-
+                <li>
+              <a href="../index.php"><i class="fa fa-home"></i> Home</a>
+            </li>
                     <li>
                         <a href="home.php"><i class="fa fa-dashboard"></i> Status</a>
                     </li>
-                  
-					<li>
-                        <a href="roombook.php"><i class="fa fa-bar-chart-o"></i>Room Booking</a>
-                    </li>
+				
                     <li>
                         <a class="active-menu" href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
                     </li>
@@ -81,92 +70,83 @@ if(!isset($_SESSION["user"]))
             </div>
 
         </nav>
-        <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                           Payment Details<small> </small>
+                          Pending Payment Details<small> </small>
                         </h1>
                     </div>
                 </div> 
-                 <!-- /. ROW  -->
 				 
 				 
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+											<th>Room Number</th>
                                             <th>Name</th>
+                                            <th>Email</th>
 											<th>Room type</th>
                                             <th>Bed Type</th>
                                             <th>Check in</th>
 											<th>Check out</th>
-											<th>No of Room</th>
-											<th>Meal Type</th>
-											
-                                            <th>Room Rent</th>
-											<th>Bed Rent</th>
-											<th>Meals </th>
-											<th>Gr.Total</th>
-											<th>Print</th>
-                                            
+                                            <th>Rent</th>
+                                            <th>Make Payment</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
 									<?php
 										include ('db.php');
-										$sql="select * from payment";
-										$re = mysqli_query($con,$sql);
+										$sql="SELECT t1.*,t3.*,t2.startDate,t2.endDate
+                                              FROM room t1
+                                              inner join customer_has_room t2 ON t2.roomNumber  = t1.roomNumber
+                                              inner join customer t3 ON t3.customerID  = t2.customerID
+                                              LEFT JOIN bill t4 ON t4.customerID  = t2.customerID
+                                              WHERE t4.customerID IS NULL ORDER BY t1.roomNumber;
+                                              ";
+                                        $re = mysqli_query($con,$sql);
+                                    $id = 0;
 										while($row = mysqli_fetch_array($re))
 										{
-										
-											$id = $row['id'];
-											
+                                            $cin = date("m-d-y", strtotime($row['startDate']));
+                                            $cout = date("m-d-y", strtotime($row['endDate']));
 											if($id % 2 ==1 )
 											{
 												echo"<tr class='gradeC'>
-													<td>".$row['title']." ".$row['fname']." ".$row['lname']."</td>
-													<td>".$row['troom']."</td>
-													<td>".$row['tbed']."</td>
-													<td>".$row['cin']."</td>
-													<td>".$row['cout']."</td>
-													<td>".$row['nroom']."</td>
-													<td>".$row['meal']."</td>
-													
-													<td>".$row['ttot']."</td>
-													<td>".$row['mepr']."</td>
-													<td>".$row['btot']."</td>
-													<td>".$row['fintot']."</td>
-													<td><a href=print.php?pid=".$id ." <button class='btn btn-primary'> <i class='fa fa-print' ></i> Print</button></td>
+													<td>".$row['roomNumber']."</td>
+													<td>".$row['name']."</td>
+													<td>".$row['email']."</td>
+													<td>".$row['roomType']."</td>
+													<td>".$row['occupancy']."</td>
+													<td>".$cin."</td>
+													<td>".$cout."</td>
+													<td>".$row['pricePerNight']."</td>
+													<td><a href='pay.php?rid=".$row['roomNumber']."&cid=".$row['customerID']."' <button class='btn btn-primary'> <i class='fa fa-credit-card' ></i> Pay</button></td>
 													</tr>";
 											}
 											else
 											{
 												echo"<tr class='gradeU'>
-													<td>".$row['title']." ".$row['fname']." ".$row['lname']."</td>
-													<td>".$row['troom']."</td>
-													<td>".$row['tbed']."</td>
-													<td>".$row['cin']."</td>
-													<td>".$row['cout']."</td>
-													<td>".$row['nroom']."</td>
-													<td>".$row['meal']."</td>
-													
-													<td>".$row['ttot']."</td>
-													<td>".$row['mepr']."</td>
-													<td>".$row['btot']."</td>
-													<td>".$row['fintot']."</td>
-													<td><a href=print.php?pid=".$id ." <button class='btn btn-primary'> <i class='fa fa-print' ></i> Print</button></td>
-													</tr>";
+                                                <td>".$row['roomNumber']."</td>
+                                                <td>".$row['name']."</td>
+                                                <td>".$row['email']."</td>
+                                                <td>".$row['roomType']."</td>
+                                                <td>".$row['occupancy']."</td>
+                                                <td>".$cin."</td>
+                                                <td>".$cout."</td>
+                                                <td>".$row['pricePerNight']."</td>
+                                                <td><a href='pay.php?rid=".$row['roomNumber']."&cid=".$row['customerID']."' <button class='btn btn-primary'> <i class='fa fa-credit-card' ></i> Pay</button></td>
+                                                </tr>";
 											
-											}
+                                            }
+                                            $id++;
 										
 										}
 										
@@ -178,10 +158,8 @@ if(!isset($_SESSION["user"]))
                             
                         </div>
                     </div>
-                    <!--End Advanced Tables -->
                 </div>
             </div>
-                <!-- /. ROW  -->
             
                 </div>
                
@@ -189,18 +167,10 @@ if(!isset($_SESSION["user"]))
         
                
     </div>
-             <!-- /. PAGE INNER  -->
             </div>
-         <!-- /. PAGE WRAPPER  -->
-     <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
-      <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
-     <!-- DATA TABLE SCRIPTS -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
         <script>
@@ -208,7 +178,6 @@ if(!isset($_SESSION["user"]))
                 $('#dataTables-example').dataTable();
             });
     </script>
-         <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
     
    

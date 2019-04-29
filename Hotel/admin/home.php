@@ -204,7 +204,7 @@ echo"
                                     <th>".$trow['occupancy']."</th>
                                     <th>".$cin."</th>
                                     <th>".$cout."</th>
-                                    <th><a href='roombook.php?rid=".$trow['roomNumber']."%".$trow['customerID']."' class='btn btn-primary'>CheckOut</a></th>
+                                    <th><a href='roombook.php?rid=".$trow['roomNumber']."&cid=".$trow['customerID']."' class='btn btn-primary'>CheckOut</a></th>
                                     </tr>";
                                     }
                                     ?>
